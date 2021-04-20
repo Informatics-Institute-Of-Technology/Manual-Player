@@ -1,31 +1,82 @@
-import React from 'react';
-import { FlatList , View} from 'react-native';
-import { useSelector } from 'react-redux';
-
-import {ImageBackground} from 'react-native';
-
-import {
-    StyleSheet, Text,   TouchableOpacity } from "react-native";
+import {StyleSheet, Text, ActivityIndicator, View, Image, FlatList,TouchableHighlight, ImageBackground} from 'react-native';
+import React, {useState, useEffect, Component} from 'react';
+import { ScrollView } from 'react-native-gesture-handler';
 import {Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
 
-
-const Excited = props => {
-
-  return (
-    <ImageBackground source={require('../../assets/girl.jpg')} style={styles.image}>
-        
-
-    <View  style={styles.list}>
+  export default class Excited extends Component {
    
-    </View>
-    </ImageBackground>
-  );
-};
+    constructor(props) {
+      super(props);
+  
+      this.state = {
+        data: [],
+        isLoading: true
+      };
+    }
+  
+    componentDidMount() {
+      fetch('http://192.168.1.7:8000/song/surprise')
+        .then((response) => response.json())
+        .then((json) => {
+          this.setState({ data: json.song });
+        })
+        .catch((error) => console.error(error))
+        .finally(() => {
+          this.setState({ isLoading: false });
+        });
+    }
+  
+    renderTracks() {
+      const { data } = this.state;
+   
+      return data.map((track, index) => (
 
-const styles = StyleSheet.create({
+       
+        <View key={track.id} style={styles.container} >
+          <Text>{track.title}</Text>
+          <Text>{track.artist}</Text>
+        </View>
+      
+      ));
+
+
+    }
+
+    render() {
+      const { loading } = this.state;
+  
+      if (loading) {
+        return (
+          <View>
+            <ActivityIndicator size="large" color="#0c9" />
+          </View>
+        );
+      }
+  
+      return (
+        <ImageBackground source={require('../../assets/fog.jpg')} style={styles.image}>
+        <View style={styles.list}>
+          <ScrollView>
+          
+          {this.renderTracks()}
+
+          </ScrollView>
+      
+        </View>
+        </ImageBackground>
+      );
+    }
+
+}
+
+  const styles = StyleSheet.create({
     container: {
-      flex: 1
+      marginVertical:10,
+      padding:5,
+      marginHorizontal:10,
+      backgroundColor:"white",
+      borderRadius:10
     },
     text:{
     color: "white",
@@ -34,35 +85,7 @@ const styles = StyleSheet.create({
     image: {
       flex: 1
     },
-    btn:{
-      width: "45%",
-      borderRadius: 20,
-      marginHorizontal:5,
-      height: 50,
-      alignItems: "center",
-      justifyContent: "center",
-      marginVertical:6,
-      backgroundColor: 'rgba(29, 135, 120, 0.4)',
-
-    },
-
-    btnactive:{
-      width: "45%",
-      borderRadius: 20,
-      marginHorizontal:5,
-      height: 50,
-      alignItems: "center",
-      justifyContent: "center",
-      marginVertical:6,
-      backgroundColor: '#1D8778',
-
-    },
-
     list:{
       height: height-135
     }
-});
-
-export default Excited;
-
-//Page displaying all tracks
+  });
