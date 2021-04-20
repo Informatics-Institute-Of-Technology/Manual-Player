@@ -145,7 +145,6 @@ const BUFFERING_STRING = "...buffering...";
 const RATE_SCALE = 3.0;
 const VIDEO_CONTAINER_HEIGHT = (DEVICE_HEIGHT - 5 * 2.0) / 5.0 - FONT_SIZE * 2;
 
-
 export default class Player extends Component {
   constructor(props) {
     super(props);
@@ -176,6 +175,9 @@ export default class Player extends Component {
       fullscreen: false,
       throughEarpiece: false
     };
+
+
+
   }
 
   componentDidMount() {
@@ -203,6 +205,8 @@ export default class Player extends Component {
       // this.playbackInstance.setOnPlaybackStatusUpdate(null);
       this.playbackInstance = null;
     }
+
+    
 
     const source = { uri: PLAYLIST[this.index].uri };
     const initialStatus = {
@@ -504,10 +508,10 @@ export default class Player extends Component {
   render() {
 
     const { navigation } = this.props;  
-    // const trackId = navigation.getParam('trackId');
-    const trackTitle = navigation.getParam('trackTitle');
-    
-
+    const trackTitle = navigation.getParam('title');
+    const trackArtist = navigation.getParam('artist');
+    const trackurl = navigation.getParam('url');
+    const trackImage = navigation.getParam('image');
 
     return !this.state.fontLoaded ? (
       <View style={styles.emptyContainer} />
@@ -519,11 +523,12 @@ export default class Player extends Component {
 
         <View>
           <Text style={[styles.text, { fontFamily: "cutive-mono-regular" }]}>
-            {this.state.playbackInstanceName}
+            {trackTitle}</Text>
+            <Text style={[styles.text, { fontFamily: "cutive-mono-regular" }]}>
+            {trackArtist}</Text>
+            
          
- 
 
-          </Text>
         </View>
     
          {/* <View style={styles.videoContainer}>  */}
@@ -547,9 +552,7 @@ export default class Player extends Component {
             onReadyForDisplay={this._onReadyForDisplay}
             useNativeControls={this.state.useNativeControls}
           />
-      <Image  source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
-        }} style={styles.img} />
+      <Image  source={{ uri: trackImage }} style={styles.img} />
         </View>
 
 
@@ -797,7 +800,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: FONT_SIZE,
-    minHeight: FONT_SIZE
+    minHeight: FONT_SIZE,
+    alignItems: "center",
+    textAlign: 'center'
   },
   buffering: {
     textAlign: "left",

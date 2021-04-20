@@ -53,10 +53,11 @@ const ImgPicker = props => {
       let responseJson = await res.json();
       if (responseJson.mood) {
         setMood(responseJson.mood)
-        // alert("Mood Detected: " + mood);
+
         Alert.alert(  
-          "Mood Detected:",  
+        
           mood,  
+          "Mood Detected:",  
           [  
 
               {  

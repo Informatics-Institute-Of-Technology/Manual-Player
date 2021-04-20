@@ -47,8 +47,12 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
       return data.map((track, index) => (
 
         <View key={track.id}  style={styles.track}>
-        <View style={styles.touchable}>
-          <TouchableCmp  useForeground>
+        <View style={styles.touchable} >
+          <TouchableCmp  useForeground onPress={() => this.props.navigation.navigate('Media-Player', {
+              title: track.title,
+              artist: track.artist,
+              url: track.link,
+              image: track.imageurl})  }>
             <View style={{flexDirection: 'row'}}>
               <View style={styles.imageContainer}>
               <Image  source={{ uri: track.imageurl }} style={styles.image} />
@@ -66,14 +70,6 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
           </TouchableCmp>
         </View>
       </View>
-
-
-
-       
-        // <View key={track.id} style={styles.container} >
-        //   <Text>{track.title}</Text>
-        //   <Text>{track.artist}</Text>
-        // </View>
       
       ));
 
