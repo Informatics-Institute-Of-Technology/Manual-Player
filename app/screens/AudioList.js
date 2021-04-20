@@ -166,7 +166,13 @@ export class AudioList extends Component {
                 extendedState={{ isPlaying }}
               />
               <OptionModal
-                onPlayPress={() => console.log('Playig audio')}
+                onPlayPress={() => {
+                this.props.navigation.navigate('Player');
+              
+              }}
+
+
+
                 onPlayListPress={() => {
                   this.context.updateState(this.context, {
                     addToPlayList: this.currentItem,
