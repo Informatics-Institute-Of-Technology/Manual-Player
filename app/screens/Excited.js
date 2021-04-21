@@ -88,7 +88,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
       }
   
       return (
-        <ImageBackground source={require('../../assets/fog.jpg')} style={styles.image}>
+        <ImageBackground source={require('../../assets/photo-1576098589967-13114dd3f571.jpeg')} style={styles.image}>
         <View style={styles.list}>
           <ScrollView>
           
