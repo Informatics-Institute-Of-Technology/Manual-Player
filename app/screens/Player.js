@@ -8,7 +8,7 @@ import PlayerButton from '../components/PlayerButton';
 import { AudioContext } from '../context/AudioProvider';
 import { pause, play, playNext, resume } from '../misc/audioController';
 import { storeAudioForNextOpening } from '../misc/helper';
-
+import {ImageBackground} from 'react-native';
 const { width } = Dimensions.get('window');
 
 const Player = () => {
@@ -141,7 +141,9 @@ const Player = () => {
   if (!context.currentAudio) return null;
 
   return (
+    <ImageBackground source={require('../../assets/photo-1558591710-4b4a1ae0f04d.jpg')} style={styles.image}>
     <Screen>
+      
       <View style={styles.container}>
         <Text style={styles.audioCount}>{`${context.currentAudioIndex + 1} / ${
           context.totalAudioCount
@@ -176,7 +178,9 @@ const Player = () => {
           </View>
         </View>
       </View>
+      
     </Screen>
+    </ImageBackground>
   );
 };
 
@@ -189,13 +193,17 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     marginBottom: 60
   },
+  image: {
+    flex: 1,
+
+  },
   container: {
     flex: 1,
   },
   audioCount: {
     textAlign: 'right',
     padding: 15,
-    color: color.FONT_LIGHT,
+    color: color.FONT,
     fontSize: 14,
   },
   midBannerContainer: {

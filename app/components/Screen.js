@@ -1,3 +1,4 @@
+import { mdiRugby } from '@mdi/js';
 import React from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import color from '../misc/color';
@@ -9,8 +10,8 @@ const Screen = ({ children }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
-    paddingTop: StatusBar.currentHeight,
+backgroundColor: 'rgba(52,52,52,0)',
+    paddingTop: 5,
   },
 });
 
