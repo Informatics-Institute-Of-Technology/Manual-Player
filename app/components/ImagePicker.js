@@ -49,27 +49,14 @@ const ImgPicker = props => {
         method: 'POST',
         body,
       });
-	
       let responseJson = await res.json();
+  
+   
       if (responseJson.mood) {
         setMood(responseJson.mood)
-
-        Alert.alert(  
-        
-          mood,  
-          "Mood Detected:",  
-          [  
-
-              {  
-                  text: 'Cancel',  
-                  onPress: () => console.log('Cancel Pressed'),  
-                  style: 'cancel',  
-              },  
-              {text: 'OK', onPress: () => console.log('OK Pressed')},  
-          ],  
-          {cancelable: false}  
-      );
+        alert("Mood detected: "+mood);
       }
+      
     } else {
       // If no file selected the show alert
       alert('Please Select File first');
@@ -90,6 +77,7 @@ const ImgPicker = props => {
     setPickedImage(image.uri);
     props.onImageTaken(image.uri);
     setSingleFile(image.uri);
+    
   };
 
   return (
@@ -121,12 +109,12 @@ const ImgPicker = props => {
 const styles = StyleSheet.create({
   imagePicker: {
     alignItems: 'center',
-    marginBottom: 15
+    marginBottom:5
   },
   imagePreview: {
     width: '100%',
     height: 300,
-    marginVertical:70,
+    marginVertical:50,
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: '#ccc',
@@ -138,7 +126,7 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 10,
     backgroundColor: "#1D8778"
   },
   image: {

@@ -13,7 +13,7 @@ import Sad from '../screens/Sad';
 import Excited from '../screens/Excited';
 import Angry from '../screens/Angry';
 import Calm from '../screens/Calm';
-
+import ImagePicker from '../components/ImagePicker';
 
 import AudioList from '../screens/AudioList';
 import Playlist from '../screens/PlayList';
@@ -27,10 +27,6 @@ import SadPlaylist from '../screens/SadPlaylist';
 import AngryPlaylist from '../screens/AngryPlaylist';
 import CalmPlaylist from '../screens/CalmPlaylist';
 import ExcitedPlaylist from '../screens/ExcitedPlaylist';
-
-
-
-
 
 
 const NavigatorHome = createStackNavigator(
@@ -56,6 +52,11 @@ const NavigatorHome = createStackNavigator(
         Recognition: {
           screen: FaceRecognition
         },
+
+        ImagePicker: {
+          screen: ImagePicker
+        },
+
         'Happy Tracks':{
           screen: Happy
         },
@@ -86,6 +87,9 @@ const NavigatorHome = createStackNavigator(
         'Calm Playlists':{
           screen: CalmPlaylist
         },
+        'Media-Player':{
+          screen: MPlayer
+        }
        
     },
    
@@ -139,9 +143,6 @@ const NavigatorHome = createStackNavigator(
       {
         'Tracks': {
           screen: AudioList
-        },
-        'Media-Player':{
-          screen: MPlayer
         }
     
  
