@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useContext, useEffect, useState } from 'react';
+import {ImageBackground} from 'react-native';
 import {
   View,
   StyleSheet,
@@ -114,7 +115,9 @@ if(addToPlayList){
   setShowPlayList(true);
   }
   return (
-    <>
+    
+    <ImageBackground source={require('../../assets/playlistimage.jpeg')} style={styles.image}>
+      
     <ScrollView contentContainerStyle={styles.container}>
       {playList.length
         ? playList.map(item => (
@@ -123,7 +126,7 @@ if(addToPlayList){
               style={styles.playListBanner}
               onPress={()=> handleBannerPress(item)}
             >
-              <Text>{item.title}</Text>
+              <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.audioCount}>
                 {item.audios.length > 1
                   ? `${item.audios.length} Songs`
@@ -146,8 +149,10 @@ if(addToPlayList){
         onSubmit={createPlayList}
       />
     </ScrollView>
+    
     <PlayListDetail visible={showPlayList} playList={selectedPlayList} onclose={()=>setShowPlayList(false)}/>
-    </>
+    </ImageBackground>
+    
   );
 };
 
@@ -157,17 +162,25 @@ const styles = StyleSheet.create({
   },
   playListBanner: {
     padding: 5,
-    backgroundColor: 'rgba(204,204,204,0.3)',
+    backgroundColor: 'rgba(0,0,0,0.6)',
     borderRadius: 5,
     marginBottom: 15,
+    marginVertical:2,
+  },
+  title:{
+    color:'white',
   },
   audioCount: {
+    color:'white',
     marginTop: 3,
-    opacity: 0.5,
+    opacity: 0.8,
     fontSize: 14,
   },
+  image: {
+   flex:1
+  },
   playListBtn: {
-    color: color.ACTIVE_BG,
+    color: 'white',
     letterSpacing: 1,
     fontWeight: 'bold',
     fontSize: 14,

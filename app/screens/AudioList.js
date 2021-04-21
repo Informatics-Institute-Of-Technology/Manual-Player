@@ -8,7 +8,8 @@ import OptionModal from '../components/OptionModal';
 import { Audio } from 'expo-av';
 import { play, pause, resume, playNext } from '../misc/audioController';
 import { storeAudioForNextOpening } from '../misc/helper';
-
+import {ImageBackground} from 'react-native';
+import { color } from 'react-native-reanimated';
 export class AudioList extends Component {
   static contextType = AudioContext;
 
@@ -138,7 +139,7 @@ export class AudioList extends Component {
 
   rowRenderer = (type, item, index, extendedState) => {
     return (
-      <AudioListItem
+      <AudioListItem style={styles.audiolist}
         title={item.filename}
         isPlaying={extendedState.isPlaying}
         activeListItem={this.context.currentAudioIndex === index}
@@ -154,12 +155,16 @@ export class AudioList extends Component {
 
   render() {
     return (
+      
       <AudioContext.Consumer>
+        
         {({ dataProvider, isPlaying }) => {
           if (!dataProvider._data.length) return null;
           return (
+            <ImageBackground source={require('../../assets/excited.jpeg')} style={styles.image}>
             <Screen>
-              <RecyclerListView
+              
+              <RecyclerListView 
                 dataProvider={dataProvider}
                 layoutProvider={this.layoutProvider}
                 rowRenderer={this.rowRenderer}
@@ -185,10 +190,15 @@ export class AudioList extends Component {
                 }
                 visible={this.state.optionModalVisible}
               />
+              
             </Screen>
+            </ImageBackground>
+            
           );
         }}
+        
       </AudioContext.Consumer>
+     
     );
   }
 }
@@ -198,7 +208,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+
   },
+  audiolist:{
+    color:'white'
+  },
+  image: {
+    flex:1
+   },
 });
 
 export default AudioList;

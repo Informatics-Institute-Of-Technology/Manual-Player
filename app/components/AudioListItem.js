@@ -84,7 +84,7 @@ const AudioListItem = ({
             onPress={onOptionPress}
             name='dots-three-vertical'
             size={20}
-            color={color.FONT_MEDIUM}
+            color={color.ACTIVE_FONT}
             style={{ padding: 10 }}
           />
         </View>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    color: color.FONT,
+    color: 'white',
   },
   separator: {
     width: width - 80,

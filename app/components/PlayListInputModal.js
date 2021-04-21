@@ -28,7 +28,7 @@ const PlayListInputModal = ({ visible, onClose, onSubmit }) => {
     <Modal visible={visible} animationType='fade' transparent>
       <View style={styles.modalContainer}>
         <View style={styles.inputContainer}>
-          <Text style={{ color: color.ACTIVE_BG }}>Create New Playlist</Text>
+          <Text style={{ color: '#1D8778' }}>Create New Playlist</Text>
           <TextInput
             value={playListName}
             onChangeText={text => setPlayListName(text)}
@@ -69,13 +69,14 @@ const styles = StyleSheet.create({
   input: {
     width: width - 40,
     borderBottomWidth: 1,
-    borderBottomColor: color.ACTIVE_BG,
+    borderBottomColor: '#1D8778',
     fontSize: 18,
     paddingVertical: 5,
+    color:color.ACTIVE_BG,
   },
   submitIcon: {
     padding: 10,
-    backgroundColor: color.ACTIVE_BG,
+    backgroundColor: '#1D8778',
     borderRadius: 50,
     marginTop: 15,
   },
