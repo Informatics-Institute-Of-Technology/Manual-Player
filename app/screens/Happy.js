@@ -24,7 +24,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 
     componentDidMount() {
-      fetch('http://192.168.1.7:8000/song/happy')
+      fetch('http://192.168.1.3:8000/song/happy')
         .then((response) => response.json())
         .then((json) => {
           this.setState({ data: json.song });

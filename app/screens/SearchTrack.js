@@ -1,5 +1,6 @@
 
 import * as React from 'react';
+import { Button } from 'react-native';
 import {
   Text,
   View,
@@ -7,6 +8,8 @@ import {
   FlatList,
   ActivityIndicator,
   Platform,
+  ImageBackground,
+  TouchableOpacity
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
@@ -18,7 +21,7 @@ export default class SearchTrack extends React.Component {
     this.arrayholder = [];
   }
   componentDidMount() {
-    return fetch('http://192.168.1.7:8000/song')
+    return fetch('http://192.168.1.3:8000/song')
       .then(response => response.json())
       .then(responseJson => {
         this.setState(
@@ -84,6 +87,7 @@ export default class SearchTrack extends React.Component {
     }
     return (
       //ListView to show with textinput used as search bar
+
       <View style={styles.viewStyle}>
         <SearchBar
           round
@@ -93,18 +97,30 @@ export default class SearchTrack extends React.Component {
           placeholder="Type Here..."
           value={this.state.search}
         />
-        <FlatList
+
+        <ImageBackground source={require('../../assets/guy.jpg')} style={styles.image}>
+
+       
+
+        <FlatList 
           data={this.state.dataSource}
           ItemSeparatorComponent={this.ListViewItemSeparator}
           //Item Separator View
           renderItem={({ item }) => (
-            // Single Comes here which will be repeatative for the FlatListItems
+            <TouchableOpacity  onPress={() => {this.props.navigation.navigate('Media-Player', {
+              title: item.title,
+              artist: item.artist,
+              url: item.link,
+              image: item.imageurl} ) }}>
+           
             <Text style={styles.textStyle}>{item.title}</Text>
+            </TouchableOpacity>
           )}
           enableEmptySections={true}
           style={{ marginTop: 10 }}
           keyExtractor={(item, index) => index.toString()}
         />
+        </ImageBackground>
       </View>
     );
   }
@@ -116,8 +132,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     marginTop: Platform.OS == 'ios' ? 30 : 0,
+  },image: {
+    flex: 1
+  },  btn:{
+    width:300,
+    borderRadius: 25,
+    height: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    alignSelf:'center',
+    backgroundColor: "#1D8778"
   },
   textStyle: {
     padding: 10,
+    color: 'white'
   },
 });

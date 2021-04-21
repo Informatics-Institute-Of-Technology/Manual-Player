@@ -98,7 +98,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignSelf: 'center',
-    width: width - 80,
+    width: width - 50,
+    backgroundColor: 'rgba(56,56,56,0.7)',
+    padding: 5,
+    borderRadius: 23
   },
   leftContainer: {
     flexDirection: 'row',

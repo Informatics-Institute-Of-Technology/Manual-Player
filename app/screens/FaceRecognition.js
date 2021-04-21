@@ -25,7 +25,7 @@ const getMood = async () => {
  
 
   console.log("Detecting mood....");
-    let res= await fetch('http://192.168.1.7:8000/image');
+    let res= await fetch('http://192.168.1.3:8000/image');
     let responseJson = await res.json();
 
     if (responseJson.mood) {

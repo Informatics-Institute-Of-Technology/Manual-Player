@@ -44,7 +44,7 @@ const ImgPicker = props => {
        body.append('file',imageData)
      
       // Please change file upload URL
-      let res= await fetch('http://192.168.1.7:8000/image', {
+      let res= await fetch('http://192.168.1.3:8000/image', {
 
         method: 'POST',
         body,

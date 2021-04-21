@@ -16,7 +16,7 @@ const {width, height} = Dimensions.get('window');
     }
   
     componentDidMount() {
-      fetch('http://192.168.1.7:8000/song/')
+      fetch('http://192.168.1.3:8000/song/')
         .then((response) => response.json())
         .then((json) => {
           this.setState({ data: json.song });
