@@ -114,6 +114,7 @@ export default class SearchTrack extends React.Component {
               image: item.imageurl} ) }}>
            
             <Text style={styles.textStyle}>{item.title}</Text>
+            <Text style={styles.textStyleArtist}>{item.artist}</Text>
             </TouchableOpacity>
           )}
           enableEmptySections={true}
@@ -145,7 +146,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#1D8778"
   },
   textStyle: {
-    padding: 10,
+    paddingTop: 7,
+    marginLeft:12,
     color: 'white'
+  },
+  textStyleArtist: {
+    paddingBottom: 7,
+    marginLeft:12,
+    color: 'grey'
   },
 });
