@@ -1,6 +1,6 @@
 //import libraries
 import React from 'react';
-import { View, Text,StyleSheet, Modal,FlatList, Dimensions } from 'react-native';
+import { View, Text,StyleSheet, Modal,FlatList, Dimensions, ImageBackground} from 'react-native';
 import color from '../misc/color';
 import AudioListItem from './AudioListItem';
 
@@ -11,6 +11,7 @@ const playListDetail = ({visible,playList,onclose}) => {
         <Modal visible={visible} animationType ='slide' transparent
         onRequestClose={onclose}>
             <View style={styles.container}>
+            <ImageBackground source={require('../../assets/photo-1587311865307-b564f4af6e1b.jpeg')} style={styles.image}>
                 <Text style={styles.title}>{playList.title}</Text>
                 <FlatList 
                 contentContainerStyle={styles.listContainer}
@@ -21,6 +22,7 @@ const playListDetail = ({visible,playList,onclose}) => {
                 duration={item.duration}/>
                 </View>
                 )}/>
+                </ImageBackground>
             </View>
             <View style={[StyleSheet.absoluteFillObject, styles.ModalBG]}/>
         </Modal>
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
         bottom:0,
         alignSelf:'center',
         height:height-150,
-        width:width-15,
+        width:width,
         backgroundColor:'#fff',
         borderTopRightRadius:30,
         borderTopLeftRadius:30,
@@ -45,15 +47,20 @@ const styles = StyleSheet.create({
         backgroundColor:color.MODAL_BG,
         zIndex:-1,
     },
+    image: {
+        width: '100%',
+        height: '100%'
+      },
     listContainer:{
-        padding:20,
+        padding:15,
     },
     title:{
         textAlign:'center',
         fontSize:20,
-        paddingVertical:5,
+        paddingVertical:8,
         fontWeight: 'bold',
-        color:'black',
+        color:'white',
+        backgroundColor:'black'
     },
 });
 

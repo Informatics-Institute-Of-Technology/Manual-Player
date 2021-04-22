@@ -14,8 +14,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
           /*Initial State and Colour*/
         iconColour : "#1D8778",
         data: [],
-        isLoading: true,
-        favorite: false
+        isLoading: true
       };
 
       
@@ -31,7 +30,6 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
         .catch((error) => console.error(error))
         .finally(() => {
           this.setState({ isLoading: false });
-          this.setState({  favorite });
           
         });
     }
@@ -40,7 +38,6 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
     renderTracks() {
       const { data } = this.state;
-      const { favorite } = this.state;
 
       let TouchableCmp = TouchableOpacity;
       return data.map((track, index) => (
@@ -62,7 +59,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
               </View>
               <View style={styles.left}>
          
-                  <Icon style={styles.icon} name={favorite ? 'heart' : 'heart-outline'} color={this.state.iconColour} size={25} onPress={() => this.setState({ favorite: !favorite }) }/>
+                  <Icon style={styles.icon} name='heart-outline' color={this.state.iconColour} size={25} />
            
               </View>
             </View>

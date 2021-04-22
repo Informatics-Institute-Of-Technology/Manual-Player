@@ -6,7 +6,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import FaceRecognition from '../screens/FaceRecognition';
 import MenuOne from '../screens/MenuOne';
 import MenuTwo from '../screens/MenuTwo';
-import Favourites from '../screens/Favourites';
 import Search from '../screens/SearchTrack';
 import Happy from '../screens/Happy';
 import Sad from '../screens/Sad';
@@ -19,14 +18,9 @@ import AudioList from '../screens/AudioList';
 import Playlist from '../screens/PlayList';
 import Player from '../screens/Player';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import AllTracks from '../screens/AllTracks';
+
 import MPlayer  from "../screens/MediaPlayer";
 
-import HappyPlaylist from '../screens/HappyPlaylist';
-import SadPlaylist from '../screens/SadPlaylist';
-import AngryPlaylist from '../screens/AngryPlaylist';
-import CalmPlaylist from '../screens/CalmPlaylist';
-import ExcitedPlaylist from '../screens/ExcitedPlaylist';
 import PlaylistDetail from '../components/PlayListDetail';
 
 
