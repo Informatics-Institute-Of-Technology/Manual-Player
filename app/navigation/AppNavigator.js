@@ -55,7 +55,6 @@ const NavigatorHome = createStackNavigator(
         screen: Player
       },
 
-
         Recognition: {
           screen: FaceRecognition
         },
@@ -67,34 +66,21 @@ const NavigatorHome = createStackNavigator(
         'Happy Tracks':{
           screen: Happy
         },
-        'Happy Playlists':{
-          screen: HappyPlaylist
-        },
         'Sad':{
           screen: Sad
-        },
-        'Sad Playlists':{
-          screen: SadPlaylist
         },
         'Excited' :{
           screen: Excited
         },
-        'Excited Playlists':{
-          screen: ExcitedPlaylist
-        },
+        
         'Angry' :{
           screen: Angry
         },
-        'Angry Playlists':{
-          screen: AngryPlaylist
-        },
+        
         'Calm' :{
           screen: Calm
         },
-        'Calm Playlists':{
-          screen: CalmPlaylist
-        },
-       
+    
       
         'Media-Player':{
           screen: MPlayer
